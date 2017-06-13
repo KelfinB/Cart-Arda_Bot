@@ -1,0 +1,490 @@
+Graph plotted by Gamma Plotting Library (version 0.1) in: 
+Tue Jun 13 12:28:03 BRT 2017
+#include </home/rglang/Desktop/Trabalho/Libraries/GammaPlottingLibrary/gammaPlottingLibrary.cpp>
+
+int main() {
+
+    gammaPlotting Cartola;
+    Cartola.CreateCanvas();
+    Cartola.Create2DAxisHistogram(0,100,9e-1,1e6,"M#acute{e}dia final","Frequ#hat{e}ncia","gAxisHist","",100,100,false,true);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoTitulares_1e4.dat",2,0);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoTitulares_1e5.dat",2,1);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoTitulares_1e6.dat",2,2);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoTitulares_5e6.dat",2,3);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoMandantes_1e4.dat",2,4);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoMandantes_1e5.dat",2,5);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoMandantes_1e6.dat",2,6);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoMandantes_5e6.dat",2,7);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_1e4.dat",2,8);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_1e5.dat",2,9);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_1e6.dat",2,10);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_5e6.dat",2,11);
+    Cartola.CreateStardardLegend(1,1,1,true);
+    Cartola.PlotGraph(0,0,1,4,1,1,20,1,1,false,true,false,true,"1 #times 10^{4} times","L");
+    Cartola.PlotGraph(1,0,1,3,1,1,20,1,1,false,true,false,true,"1 #times 10^{5} times","L");
+    Cartola.PlotGraph(2,0,1,2,1,1,20,1,1,false,true,false,true,"1 #times 10^{6} times","L");
+    Cartola.PlotGraph(3,0,1,1,1,1,20,1,1,false,true,false,true,"5 #times 10^{6} times","L");
+    Cartola.PlotGraph(4,0,1,4,3,1,20,1,1,false,true,false);
+    Cartola.PlotGraph(5,0,1,3,3,1,20,1,1,false,true,false);
+    Cartola.PlotGraph(6,0,1,2,3,1,20,1,1,false,true,false);
+    Cartola.PlotGraph(7,0,1,1,3,1,20,1,1,false,true,false);
+    Cartola.PlotGraph(8,0,1,4,4,1,20,1,1,false,true,false);
+    Cartola.PlotGraph(9,0,1,3,4,1,20,1,1,false,true,false);
+    Cartola.PlotGraph(10,0,1,2,4,1,20,1,1,false,true,false);
+    Cartola.PlotGraph(11,0,1,1,4,1,20,1,1,false,true,false);
+    Cartola.CreateCustomLegend(0.645,0.4,0.945,0.64,true);
+    Cartola.PlotGraph(3,0,1,1,1,1,20,1,1,false,true,false,true,"Titulares","L");
+    Cartola.PlotGraph(7,0,1,1,3,1,20,1,1,false,true,false,true,"Mandantes","L");
+    Cartola.PlotGraph(11,0,1,1,4,1,20,1,1,false,true,false,true,"Odds < 2.5","L");
+    Cartola.CreateArrow(66.94,10*0.6*0.6*0.6,66.94,1,2,3,0.02);
+    Cartola.CreateArrow(64.98,10*0.6*0.6,64.98,1,2,3,0.02);
+    Cartola.CreateArrow(61.87,10,61.87,1,2,3,0.02);
+    Cartola.CreateArrow(62.89,10*0.6,62.89,1,2,3,0.02);
+    Cartola.CreatePaveText(65.94,10*0.6*0.6*0.6,65.94+5,10*0.6*0.6*0.6*1.65);
+    Cartola.AddPaveText("2013");
+    Cartola.CreatePaveText(63.98,10*0.6*0.6,63.98+5,10*0.6*0.6*1.65);
+    Cartola.AddPaveText("2014");
+    Cartola.CreatePaveText(60.87,10,60.87+5,10*1.65);
+    Cartola.AddPaveText("2015");
+    Cartola.CreatePaveText(62.39,10*0.6,62.39+5,10*0.6*1.65);
+    Cartola.AddPaveText("2016");
+    Cartola.Print("../Analises/PontuacaoCampeao/PontuacaoCampeao","PlotAnalise.cpp");
+    return(0);
+
+}
+// Gamma Plotting Library - by Rodrigo Guedes Lang
+
+/* Library to make plotting from ROOT easier
+ *
+ * Author: Rodrigo Guedes Lang
+ * Institution: IFSC - USP - Brazil
+ *
+ * Version = 0.1.01
+ * Update: 21/03/2017
+ *  -Read files to graph
+ *  -Create Canvas
+ *  -Create Axis Histograms
+ *  -Create Legend
+ *  -Plot Graph
+ *  -Print
+ *
+ * Update: 07/06/2017
+ *  -TPaveText
+ *
+ * Last Update: 13/06/2016
+ *  -TArrow
+ *
+*/
+
+/*
+ * Still missing:
+ * -ReadFileToFill
+ * -Plot1DHistograms
+ * -Plot2DHistograms
+ * -PlotGraphErrors
+ * -PlotGraphAssymErrors
+ * -Arrumar os construtores de funções
+*/
+
+// ROOT libraries
+#include <TCanvas.h>
+
+#include <TGraph.h>
+#include <TGraphErrors.h>
+#include <TGraphAsymmErrors.h>
+
+#include <TH1.h>
+#include <TH2.h>
+#include <TH3.h>
+
+#include <TStyle.h>
+#include <TLegend.h>
+#include <TPaveText.h>
+#include <TMathText.h>
+#include <TArrow.h>
+
+//General libraries
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+class gammaPlotting {
+
+public:
+
+    bool gDebug = false;
+
+    TCanvas *gCanvas;
+    double ***gDataGraph;
+    int *gDataGraphNumberOfLines;
+    TLegend *gLegend;
+    TPaveText *gPaveText;
+    TArrow *gArrow;
+
+    string gGammaVersion = "0.1";
+
+
+    /* Debugging
+     * -Turns on messages
+     */
+    void SetDebug(bool fDebug) { gDebug = fDebug; }
+
+
+    /* MallocDataGraph
+     * -Allocates the memory for the matrix with the Graph data
+     * -Reads up to 100 graphs in one routine
+     * -Data is organized in gDataGraph[numberOfGraphs][numberOfLines][numberOfRows]
+     */
+    void MallocDataGraph() {
+        gDataGraph = (double ***) malloc(sizeof(double **) * 100);
+        gDataGraphNumberOfLines = (int *) malloc(sizeof(int ) * 100);
+
+    }
+
+
+    /* ReadFilesToGraph
+     * -Reads files on the pattern "a;b;c;d" on each line
+     */
+    void ReadFileToGraph(string fFileName, int fNRows, int fReference) {
+
+        if (fReference == 0) { MallocDataGraph(); }
+
+        int i,j;
+        float fTemp;
+
+        string fCommandNumberOfLines;
+
+        const char *fChar;
+
+        fChar = (fFileName).c_str();
+        if (gDebug) { printf("Reading file %s\n",fChar); }
+
+        FILE *fFile = fopen(fChar,"r");
+
+        if (gDebug) { printf("File opened "); }
+
+        fCommandNumberOfLines = "more " + fFileName + " | wc -l > gamma_read.dat";
+        fChar = (fCommandNumberOfLines).c_str();
+        system(fChar);
+
+        FILE *fFileWithNumberOfLines = fopen("gamma_read.dat","r");
+
+        fscanf(fFileWithNumberOfLines,"%d",&(gDataGraphNumberOfLines[fReference]));
+
+        if (gDebug) { cout << "-" << gDataGraphNumberOfLines[fReference] << " lines\n" << endl; }
+
+        gDataGraph[fReference] = (double **) malloc(sizeof(double*) * gDataGraphNumberOfLines[fReference]);
+
+        for (i=0;i<gDataGraphNumberOfLines[fReference];i++) {
+
+            gDataGraph[fReference][i] = (double *) malloc(sizeof(double) * fNRows);
+
+        }
+
+        for (i=0;i<gDataGraphNumberOfLines[fReference];i++) {
+
+            for (j=0;j<fNRows;j++) {
+
+                fscanf(fFile,"%f",&fTemp);
+
+                if (j != fNRows-1) { fgetc(fFile); }
+
+                gDataGraph[fReference][i][j] = fTemp;
+
+            }
+
+        }
+
+        fclose(fFileWithNumberOfLines);
+        fclose(fFile);
+        system("rm gamma_read.dat");
+
+        return;
+
+    }
+
+
+    /* Creates the canvas
+     * -Should I put it together with CreateAxisHist?
+     */
+    void CreateCanvas(string fName = "gCanvas", string fTitle = "", int fWidth = 900, int fHeight = 900) {
+
+        const char *fNameChar,*fTitleChar;
+        fNameChar = fName.c_str();
+        fTitleChar = fTitle.c_str();
+
+        gCanvas = new TCanvas(fNameChar,fTitleChar,200,10,fWidth,fHeight);
+
+        return;
+
+    }
+
+
+    /* Creates the axis histogram
+     * -Contains a lot of information about the plot design
+     * -Should reduce all that to a single line
+     * -Is default plot ok?
+     */
+    void Create2DAxisHistogram(double fXmin, double fXmax, double fYmin, double fYmax, string fXAxisTitle, string fYAxisTitle, string fName = "gAxisHist", string fTitle = "", int fNx = 100, int fNy = 100,
+                               bool fLogx = false, bool fLogy = false, bool fOptStat = false,
+                               double fXAxisTitleSize = 0.04, double fYAxisTitleSize = 0.04, double fXAxisTitleOffset = 1.3, double fYAxisTitleOffset = 1.4, int fXAxisTitleNDivisions = 505, int fYAxisTitleNDivisions = 505,
+                               bool fXAxisCenter = true, bool fYAxisCenter = true,
+                               double fLeftMargin = 0.12, double fRightMargin = 0.05, double fTopMargin = 0.05, double fBottomMargin = 0.12) {
+
+        const char *fNameChar,*fTitleChar,*fXTitleChar,*fYTitleChar;
+        fNameChar = fName.c_str();
+        fTitleChar = fTitle.c_str();
+        fXTitleChar = fXAxisTitle.c_str();
+        fYTitleChar = fYAxisTitle.c_str();
+
+        TH2D *g2DAxisHist = new TH2D(fNameChar,fTitleChar,fNx,fXmin,fXmax,fNy,fYmin,fYmax);
+
+        g2DAxisHist->GetXaxis()->SetTitle(fXTitleChar);
+        g2DAxisHist->GetYaxis()->SetTitle(fYTitleChar);
+        g2DAxisHist->GetXaxis()->SetTitleSize(fXAxisTitleSize);
+        g2DAxisHist->GetYaxis()->SetTitleSize(fYAxisTitleSize);
+        g2DAxisHist->GetXaxis()->SetTitleOffset(fXAxisTitleOffset);
+        g2DAxisHist->GetYaxis()->SetTitleOffset(fYAxisTitleOffset);
+        g2DAxisHist->GetXaxis()->SetNdivisions(fXAxisTitleNDivisions);
+        g2DAxisHist->GetYaxis()->SetNdivisions(fYAxisTitleNDivisions);
+
+        if (fXAxisCenter) { g2DAxisHist->GetXaxis()->CenterTitle(); }
+        if (fYAxisCenter) { g2DAxisHist->GetYaxis()->CenterTitle(); }
+
+        if (fLogx) { gPad->SetLogx(); }
+        if (fLogy) { gPad->SetLogy(); }
+
+        if (!fOptStat) { gStyle->SetOptStat(0); }
+        gPad->SetLeftMargin(fLeftMargin);
+        gPad->SetRightMargin(fRightMargin);
+        gPad->SetTopMargin(fTopMargin);
+        gPad->SetBottomMargin(fBottomMargin);
+
+        g2DAxisHist->Draw("AXIS");
+
+        return;
+
+    }
+
+
+    /* Plots the graph
+     * -Information from files already read
+     * -Contains information about the graph desing
+     */
+    void PlotGraph(int fReference, int fXRow, int fYRow, int fLineStyle = 1, int fLineColor = 1, int fLineWidth=3, int fMarkerStyle = 20, int fMarkerColor = 1, int fMarkerSize = 1,
+                   bool fPoint = true, bool fLine = true, bool fCurve = false,
+                   bool fLegend = false, string fLegendTitle = "", string fLegendOption = "P") {
+
+        double *gX,*gY;
+        int i;
+
+        gX = (double *) malloc(sizeof(double) * gDataGraphNumberOfLines[fReference]);
+        gY = (double *) malloc(sizeof(double) * gDataGraphNumberOfLines[fReference]);
+
+        for (i=0;i<gDataGraphNumberOfLines[fReference];i++) {
+
+            gX[i] = gDataGraph[fReference][i][fXRow];
+            gY[i] = gDataGraph[fReference][i][fYRow];
+
+        }
+
+        TGraph *gGraph = new TGraph(gDataGraphNumberOfLines[fReference],gX,gY);
+
+        gGraph->SetLineStyle(fLineStyle);
+        gGraph->SetLineWidth(fLineWidth);
+        gGraph->SetLineColor(fLineColor);
+        gGraph->SetMarkerStyle(fMarkerStyle);
+        gGraph->SetMarkerColor(fMarkerColor);
+        gGraph->SetMarkerSize(fMarkerSize);
+
+        if (!fPoint && !fLine && !fCurve) {
+
+            cout << "ERROR: No drawing option for graph " << fReference << "!!" << endl;
+            return;
+
+        }
+
+        if (fPoint) { gGraph->Draw("SAME,P"); }
+        if (fLine) { gGraph->Draw("SAME,L"); }
+        if (fCurve) { gGraph->Draw("SAME,C"); }
+
+        if (fLegend) {
+
+            const char *fTitleChar,*fOptionChar;
+            fTitleChar = fLegendTitle.c_str();
+            fOptionChar = fLegendOption.c_str();
+
+            gLegend->AddEntry(gGraph,fTitleChar,fOptionChar);
+
+        }
+
+        return;
+
+    }
+
+
+    /* Default legends
+     * -4 positions (quadrantes)
+     * -Size factor
+     * -Proportion (X/Y)
+     */
+    void CreateStardardLegend(double fSize = 1, double fProportion = 1, int fPosition = 1, bool fBorder = false) {
+
+        double fXmin, fYmin, fXmax, fYmax;
+
+        if (fPosition < 1 || fPosition > 4) {
+
+            cout << "ERROR: Wrong position for the legend" << endl;
+            return;
+
+        }
+
+        if (fPosition == 1) {
+
+            fXmax = 0.945;
+            fYmax = 0.945;
+            fXmin = 0.945 - 0.3*fSize;
+            fYmin = 0.945 - 0.3*fSize/fProportion;
+
+        }
+
+        else if (fPosition == 2) {
+
+            fXmin = 0.159;
+            fYmax = 0.945;
+            fXmax = 0.159 + 0.3*fSize;
+            fYmin = 0.945 - 0.3*fSize/fProportion;
+
+        }
+
+        else if (fPosition == 3) {
+
+            fXmin = 0.159;
+            fYmin = 0.159;
+            fXmax = 0.159 + 0.3*fSize;
+            fYmax = 0.159 + 0.3*fSize;
+
+        }
+
+        else {
+
+            fXmax = 0.945;
+            fYmin = 0.159;
+            fXmin = 0.945 - 0.3*fSize;
+            fYmax = 0.159 + 0.3*fSize;
+
+        }
+
+        gLegend = new TLegend(fXmin,fYmin,fXmax,fYmax);
+        if (!fBorder) { gLegend->SetBorderSize(0); }
+        gLegend->Draw("SAME");
+
+        return;
+
+    }
+
+
+    /* Creates a completely custom legend
+     */
+    void CreateCustomLegend(double fXmin, double fYmin, double fXmax, double fYmax, bool fBorder = false) {
+
+        gLegend = new TLegend(fXmin,fYmin,fXmax,fYmax);
+        if (!fBorder) { gLegend->SetBorderSize(0); }
+        gLegend->Draw("SAME");
+
+        return;
+
+    }
+
+
+    /* Just redraws the legend
+     * -Might be necessary when there is an overlap with the graphs
+     */
+    void DrawLegend() { gLegend->Draw("SAME"); }
+
+    /* Print the plot, the root file and the code used to generate it
+     * -How should .root and .cpp work?
+     */
+    void Print(string fName, string fNameMacro) {
+
+        const char *fNameChar;
+        fNameChar = fName.c_str();
+
+        char fNameEPS[100],fNamePDF[100],fNamePNG[100],fNameROOT[100];
+        sprintf(fNameEPS,"%s.eps",fNameChar);
+        sprintf(fNamePDF,"%s.pdf",fNameChar);
+        sprintf(fNamePNG,"%s.png",fNameChar);
+        sprintf(fNameROOT,"%s.root",fNameChar);
+
+        gCanvas->Print(fNameEPS);
+        gCanvas->Print(fNamePDF);
+        gCanvas->Print(fNamePNG);
+        gCanvas->Print(fNameROOT);
+
+        string fCommandPrintToFile;
+        string fNameCPP = fName + ".originalcpp";
+        fCommandPrintToFile = "rm " + fNameCPP;
+        fNameChar = fCommandPrintToFile.c_str();
+        system(fNameChar);
+        fCommandPrintToFile = "echo 'Graph plotted by Gamma Plotting Library (version " + gGammaVersion + ") in: ' >> " + fNameCPP;
+        fNameChar = fCommandPrintToFile.c_str();
+        system(fNameChar);
+        fCommandPrintToFile = "date >> " + fNameCPP;
+        fNameChar = fCommandPrintToFile.c_str();
+        system(fNameChar);
+        fCommandPrintToFile = "more " + fNameMacro + " >> " + fNameCPP;
+        fNameChar = fCommandPrintToFile.c_str();
+        system(fNameChar);
+        string fFileName(__FILE__);
+        fCommandPrintToFile = "more " + fFileName + " >> " + fNameCPP;
+        fNameChar = fCommandPrintToFile.c_str();
+        system(fNameChar);
+
+        return;
+
+    }
+
+    void CreatePaveText(const double fXi, const double fYi, const double fXf, const double fYf, bool fHistValues = true, bool fMargin = false, const int fFill = 0) {
+
+        if (!fHistValues) { gPaveText = new TPaveText(fXi,fYi,fXf,fYf,"brNDC"); }
+        else { gPaveText = new TPaveText(fXi,fYi,fXf,fYf); }
+
+        if (fMargin) { gPaveText->SetBorderSize(1); }
+        gPaveText->SetFillColor(fFill);
+
+        gPaveText->Draw("SAME");
+
+        return;
+    }
+
+    void AddPaveText(string fText) {
+
+        const char* fTextChar;
+        fTextChar = fText.c_str();
+        gPaveText->AddText(fTextChar);
+
+        return;
+
+    }
+
+    void CreateArrow(const double fXi, const double fYi, const double fXf, const double fYf, const int fColor = 1, const int fWidth = 3, const float fSize = 0.05, string fOption = "|>") {
+
+        const char* fCharOption;
+        fCharOption = fOption.c_str();
+
+        gArrow = new TArrow(fXi,fYi,fXf,fYf,fSize,fCharOption);
+        gArrow->SetLineColor(fColor);
+        gArrow->SetLineWidth(fWidth);
+        gArrow->SetFillColor(fColor);
+        gArrow->Draw("");
+
+        return;
+
+    }
+
+};
