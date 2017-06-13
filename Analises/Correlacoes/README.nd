@@ -1,0 +1,6 @@
+# Análise de correlações
+
+-Para cada posição, busca-se a correlação entre o valor total de um dado atributo até aquela rodada com a pontuação naquela rodada;
+-Feito para todos os atributos do scout além de pontuação anterior, média e preço;
+-Não é levado em conta informações sobre o time adversário;
+-Dividido em quatro grupos de acordo com o total de jogos jogados.
