@@ -1,5 +1,5 @@
 Graph plotted by Gamma Plotting Library (version 0.1) in: 
-Tue Jun 13 12:28:03 BRT 2017
+Tue Jun 13 15:47:58 BRT 2017
 #include </home/rglang/Desktop/Trabalho/Libraries/GammaPlottingLibrary/gammaPlottingLibrary.cpp>
 
 int main() {
@@ -15,10 +15,10 @@ int main() {
     Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoMandantes_1e5.dat",2,5);
     Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoMandantes_1e6.dat",2,6);
     Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoMandantes_5e6.dat",2,7);
-    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_1e4.dat",2,8);
-    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_1e5.dat",2,9);
-    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_1e6.dat",2,10);
-    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue25_5e6.dat",2,11);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue20_1e4.dat",2,8);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue20_1e5.dat",2,9);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue20_1e6.dat",2,10);
+    Cartola.ReadFileToGraph("../Analises/PontuacaoCampeao/SoOddMenorQue20_5e6.dat",2,11);
     Cartola.CreateStardardLegend(1,1,1,true);
     Cartola.PlotGraph(0,0,1,4,1,1,20,1,1,false,true,false,true,"1 #times 10^{4} times","L");
     Cartola.PlotGraph(1,0,1,3,1,1,20,1,1,false,true,false,true,"1 #times 10^{5} times","L");
@@ -35,7 +35,7 @@ int main() {
     Cartola.CreateCustomLegend(0.645,0.4,0.945,0.64,true);
     Cartola.PlotGraph(3,0,1,1,1,1,20,1,1,false,true,false,true,"Titulares","L");
     Cartola.PlotGraph(7,0,1,1,3,1,20,1,1,false,true,false,true,"Mandantes","L");
-    Cartola.PlotGraph(11,0,1,1,4,1,20,1,1,false,true,false,true,"Odds < 2.5","L");
+    Cartola.PlotGraph(11,0,1,1,4,1,20,1,1,false,true,false,true,"Odds < 2","L");
     Cartola.CreateArrow(66.94,10*0.6*0.6*0.6,66.94,1,2,3,0.02);
     Cartola.CreateArrow(64.98,10*0.6*0.6,64.98,1,2,3,0.02);
     Cartola.CreateArrow(61.87,10,61.87,1,2,3,0.02);
