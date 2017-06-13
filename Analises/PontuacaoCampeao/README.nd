@@ -1,0 +1,9 @@
+# Pontuação Aleatória
+
+Busca entender se a pontuação do campeão de cada ano é atingível apensar devido à estatística do grande número de times.
+Foram montados N times que escolhiam jogadores aleatórios, na formação 4-3-3 a cada rodada usando os seguintes cortes:
+-Apenas titulares
+-Apenas titulares e mandantes
+-Apenas titulares, mandantes e com Odd < 2.5
+
+Os resultados são comparados com as médias finais do campeão de cada ano entre 2013-2016 e ficou mostrado que tais médias não podem ser atingidas com cortes tão simples, mesmo com altíssima estatística.
